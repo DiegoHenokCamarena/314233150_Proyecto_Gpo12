@@ -1,4 +1,3 @@
-
 // Std. Includes
 #include <string>
 
@@ -40,7 +39,7 @@ bool firstMouse = true;
 
 // Light attributes
 glm::vec3 lightPos(0.5f, 0.5f, 2.5f);
-glm::vec3 movelightPos(0.0f, 0.0f, 0.0f);//Antes era un 0.0f
+glm::vec3 movelightPos(0.0f, 0.0f, 0.0f); //Antes era un 0.0f
 GLfloat deltaTime = 0.0f;
 GLfloat lastFrame = 0.0f;
 float rot = 0.0f;
@@ -235,11 +234,6 @@ int main()
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 0.0f, 0.0f);
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.specular"), 1.0f, 1.0f, 1.0f);
         glUniform1f(glGetUniformLocation(lightingShader.Program, "material.shininess"), 128.0f);
-
-
-
-
-
         // Draw the loaded model
         glm::mat4 model(1);
         model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
@@ -247,7 +241,6 @@ int main()
         glBindVertexArray(VAO);
         /*POKEBOLA 1*/
         pokearriba.Draw(lightingShader);
-
         glUniform3f(glGetUniformLocation(lightingShader.Program, "material.diffuse"), 1.0f, 1.0f, 1.0f);
         model = glm::mat4(1);
         pokeabajo.Draw(lightingShader);
@@ -415,42 +408,24 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
         }
     }
 
-    if (keys[GLFW_KEY_U])
-    {
-        //activanim = true;
+    if (keys[GLFW_KEY_U]){        
         movelightPos.z -= 0.1f;
     }
-
-    if (keys[GLFW_KEY_J])
-    {
-        //activanim = true;
+    if (keys[GLFW_KEY_J]){        
         movelightPos.z += 0.1f;
     }
-
-    if (keys[GLFW_KEY_H])
-    {
-        //activanim = true;
+    if (keys[GLFW_KEY_H]){        
         movelightPos.x -= 0.1f;
     }
-
-    if (keys[GLFW_KEY_K])
-    {
-        //activanim = true;
+    if (keys[GLFW_KEY_K]){
         movelightPos.x += 0.1f;
     }
-
-    if (keys[GLFW_KEY_M])
-    {
-        //activanim = true;
+    if (keys[GLFW_KEY_M]){       
         movelightPos.y += 0.1f;
     }
-
-    if (keys[GLFW_KEY_N])
-    {
-        //activanim = true;
+    if (keys[GLFW_KEY_N]){
         movelightPos.y -= 0.1f;
     }
-
 }
 
 void MouseCallback(GLFWwindow* window, double xPos, double yPos)
