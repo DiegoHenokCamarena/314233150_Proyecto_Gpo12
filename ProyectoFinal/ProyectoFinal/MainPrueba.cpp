@@ -201,7 +201,11 @@ int main()
 	Model Torso((char*)"Models/Personaje/torso.obj");
 	Model BrazoDer((char*)"Models/Personaje/brazoder.obj");
 	Model BrazoIzq((char*)"Models/Personaje/brazoizq.obj");
-	Model Cabeza((char*)"Models/Personaje/cabeza.obj");
+	Model LavatrastesCuerpo((char*)"Models/Modelos/Lavatrastes_Picapiedras/lavatrastesCuerpo.obj");
+	Model LavatrastesPD((char*)"Models/Modelos/Lavatrastes_Picapiedras/lavatrastesPuertaD.obj");
+	Model LavatrastesPI((char*)"Models/Modelos/Lavatrastes_Picapiedras/lavatrastesPuertaI.obj");
+	Model LamparaCabeza((char*)"Models/Modelos/Lampara_Picapiedras/cabeza_lampara.obj");
+	Model LamparaCuerpo((char*)"Models/Modelos/Lampara_Picapiedras/cuerpo_lampara.obj");
 
 	//Objeto traslucido
 	Model objTras("Models/Cubo/Cube01.obj");
@@ -392,12 +396,12 @@ int main()
 
 	// Load textures
 	vector<const GLchar*> faces;
-	faces.push_back("SkyBox/right.tga");
-	faces.push_back("SkyBox/left.tga");
-	faces.push_back("SkyBox/top.tga");
+	faces.push_back("SkyBox/skyBack.tga");
+	faces.push_back("SkyBox/skyBack.tga");
+	faces.push_back("SkyBox/skyBack.tga");
 	faces.push_back("SkyBox/bottom.tga");
-	faces.push_back("SkyBox/back.tga");
-	faces.push_back("SkyBox/front.tga");
+	faces.push_back("SkyBox/skyBack.tga");
+	faces.push_back("SkyBox/skyBack.tga");
 	
 	GLuint cubemapTexture = TextureLoading::LoadCubemap(faces);
 
@@ -522,21 +526,15 @@ int main()
 
 
 
-		//Carga de modelo 
-		//Personaje
-
-		
+		//Carga de modelo
+		//--------------------------LAVATRASTES--------------------------//
 		view = camera.GetViewMatrix();
 		glm::mat4 model(1);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model,glm::vec3(posX,posY,posZ));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Torso.Draw(lightingShader);
-
-	
-
-		//Pierna Izq
+		LavatrastesCuerpo.Draw(lightingShader);
 		view = camera.GetViewMatrix();
 		model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
@@ -544,69 +542,105 @@ int main()
 		model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
-		PiernaDer.Draw(lightingShader);
-	//	Pie Izq
+		LavatrastesPD.Draw(lightingShader);
 		view = camera.GetViewMatrix();
-		model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		BotaDer.Draw(lightingShader);
-
-		//Pierna Der
-		view = camera.GetViewMatrix();
-		model = glm::translate(tmp, glm::vec3(0.5f, 0.0f, -0.1f));
-		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
-
-		PiernaIzq.Draw(lightingShader);
-		//Pie Der
-		view = camera.GetViewMatrix();
-		model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		BotaDer.Draw(lightingShader);
-
-		//Brazo derecho
-		view = camera.GetViewMatrix();
-		model = glm::mat4(1);
-		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-0.75f, 2.5f, 0));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		BrazoDer.Draw(lightingShader);
-
-	//	Brazo Izquierdo
-		view = camera.GetViewMatrix();
-		model = glm::mat4(1);
-		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(0.75f, 2.5f, 0));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		BrazoIzq.Draw(lightingShader);
-
-		//Cabeza
-		view = camera.GetViewMatrix();
-		model = glm::mat4(1);
+		model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0));
+		model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
-		Cabeza.Draw(lightingShader);
-	
-		//Traslucidez
+		LavatrastesPI.Draw(lightingShader);
+		//--------------------------LAMPARA--------------------------//
+		//view = camera.GetViewMatrix();
+		////glm::mat4 model(1);
+		//tmp = model = glm::translate(model, glm::vec3(-1, 1, 0));
+		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//LamparaCuerpo.Draw(lightingShader);
+		//view = camera.GetViewMatrix();
+		//model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
+		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		//model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+		//LamparaCabeza.Draw(lightingShader);
+		//---------------------Dibujar objetos!---------------------//
+		//Torso.Draw(lightingShader);
+		////Pierna Izq
+		//view = camera.GetViewMatrix();
+		//model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
+		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		//model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+		//PiernaDer.Draw(lightingShader);
+		////	Pie Izq
+		//view = camera.GetViewMatrix();
+		//model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//BotaDer.Draw(lightingShader);
 
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
-		model = glm::mat4(1);
-		model = glm::scale(model, glm::vec3(1.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
-		objTras.Draw(lightingShader);
-		glDisable(GL_BLEND);
-		glEnable(GL_DEPTH_TEST);
+		////Pierna Der
+		//view = camera.GetViewMatrix();
+		//model = glm::translate(tmp, glm::vec3(0.5f, 0.0f, -0.1f));
+		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+
+		//PiernaIzq.Draw(lightingShader);
+		////Pie Der
+		//view = camera.GetViewMatrix();
+		//model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//BotaDer.Draw(lightingShader);
+
+		////Brazo derecho
+		//view = camera.GetViewMatrix();
+		//model = glm::mat4(1);
+		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::translate(model, glm::vec3(-0.75f, 2.5f, 0));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//BrazoDer.Draw(lightingShader);
+
+		////	Brazo Izquierdo
+		//view = camera.GetViewMatrix();
+		//model = glm::mat4(1);
+		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::translate(model, glm::vec3(0.75f, 2.5f, 0));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//BrazoIzq.Draw(lightingShader);
+
+		////Cabeza
+		//view = camera.GetViewMatrix();
+		//model = glm::mat4(1);
+		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		//model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+		//Cabeza.Draw(lightingShader);
+
+		////Traslucidez
+
+		//glEnable(GL_BLEND);
+		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		//model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
+		//model = glm::mat4(1);
+		//model = glm::scale(model, glm::vec3(1.0f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+		//objTras.Draw(lightingShader);
+		//glDisable(GL_BLEND);
+		//glEnable(GL_DEPTH_TEST);
+		//---------------------Dibujar objetos!---------------------//
 		glBindVertexArray(0);
 
 
