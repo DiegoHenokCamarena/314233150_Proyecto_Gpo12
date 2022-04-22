@@ -204,8 +204,8 @@ int main()
 	Model LavatrastesCuerpo((char*)"Models/Modelos/Lavatrastes_Picapiedras/lavatrastesCuerpo.obj");
 	Model LavatrastesPD((char*)"Models/Modelos/Lavatrastes_Picapiedras/lavatrastesPuertaD.obj");
 	Model LavatrastesPI((char*)"Models/Modelos/Lavatrastes_Picapiedras/lavatrastesPuertaI.obj");
-	Model LamparaCabeza((char*)"Models/Modelos/Lampara_Picapiedras/cabeza_lampara.obj");
-	Model LamparaCuerpo((char*)"Models/Modelos/Lampara_Picapiedras/cuerpo_lampara.obj");
+	//Model LamparaCabeza((char*)"Models/Modelos/Lampara_Picapiedras/cabeza_lampara.obj");
+	Model Lampara((char*)"Models/Modelos/Lampara_Picapiedras/lamparaPicapiedras.obj");
 
 	//Objeto traslucido
 	Model objTras("Models/Cubo/Cube01.obj");
@@ -441,7 +441,7 @@ int main()
 		// == ==========================
 		// Directional light
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.direction"), -0.2f, -1.0f, -0.3f);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), 0.0f, 1.0f, 1.0f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), 0.0f, 0.5f, 0.5f);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.diffuse"), 0.4f, 0.4f, 0.4f);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.specular"), 0.5f, 0.5f, 0.5f);
 
@@ -552,13 +552,13 @@ int main()
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		LavatrastesPI.Draw(lightingShader);
 		//--------------------------LAMPARA--------------------------//
-		//view = camera.GetViewMatrix();
-		////glm::mat4 model(1);
-		//tmp = model = glm::translate(model, glm::vec3(-1, 1, 0));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//LamparaCuerpo.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		//glm::mat4 model(1);
+		tmp = model = glm::translate(model, glm::vec3(120, 0, 40));
+		model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Lampara.Draw(lightingShader);
 		//view = camera.GetViewMatrix();
 		//model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
 		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
