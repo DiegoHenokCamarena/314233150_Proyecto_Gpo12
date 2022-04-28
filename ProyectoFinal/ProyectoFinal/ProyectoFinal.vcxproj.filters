@@ -19,4 +19,18 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\anim.frag">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
+    <None Include="Shaders\anim.vs">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
+    <None Include="Shaders\anim2.frag">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
+    <None Include="Shaders\anim2.vs">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
+  </ItemGroup>
 </Project>
