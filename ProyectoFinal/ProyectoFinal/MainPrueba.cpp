@@ -212,6 +212,9 @@ int main()
 	Model Torso((char*)"Models/Personaje/torso.obj");
 	Model BrazoDer((char*)"Models/Personaje/brazoder.obj");
 	Model BrazoIzq((char*)"Models/Personaje/brazoizq.obj");*/
+	//--------------------------------FACHADA--------------------------------//
+	Model Fachada((char*)"Models/Modelos/Fachada_Picapiedras/fachadaPicapiedras.obj");
+	Model PuertaFachada((char*)"Models/Modelos/Fachada_Picapiedras/PuertaFachadaPicapiedras.obj");
 	//--------------------------------1. Lavatrastes--------------------------------//
 	Model LavatrastesCuerpo((char*)"Models/Modelos/Lavatrastes_Picapiedras/lavatrastesCuerpo.obj");
 	Model LavatrastesPD((char*)"Models/Modelos/Lavatrastes_Picapiedras/lavatrastesPuertaD.obj");
@@ -225,7 +228,12 @@ int main()
 	Model relojCuerpoPajaro((char*)"Models/Modelos/Reloj_Picapiedras/relojCuerpoPajaro.obj");
 	Model relojAlaIzqPajaro((char*)"Models/Modelos/Reloj_Picapiedras/relojAlaIzqPajaro.obj");
 	Model relojAlaDerPajaro((char*)"Models/Modelos/Reloj_Picapiedras/relojAlaDerPajaro.obj");
-
+	//--------------------------------4. Estufa--------------------------------//
+	 Model hornoPicapiedras((char*)"Models/Modelos/Horno_Picapiedras/HornoPicapiedras.obj");
+	 Model FuegoHornoPicapiedras((char*)"Models/Modelos/Horno_Picapiedras/FuegoHornoPicapiedras.obj");
+	 //--------------------------------5. Cazuela--------------------------------//
+	 Model cazuelaPicapiedras((char*)"Models/Modelos/Cazuela_Picapiedras/Cazuela_Picapiedras.obj");
+	 Model aguaCazuelaPicapiedras((char*)"Models/Modelos/Cazuela_Picapiedras/AguaCazuela_Picapiedras.obj");
 	//Objeto traslucido
 	Model objTras("Models/Cubo/Cube01.obj");
 
@@ -546,9 +554,20 @@ int main()
 
 
 		//Carga de modelo
-		//--------------------------LAVATRASTES--------------------------//
+		//--------------------------FACHADA--------------------------//
 		view = camera.GetViewMatrix();
 		glm::mat4 model(1);
+		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
+		model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		model = glm::translate(model, glm::vec3(-60.0f, -30.0f, 0.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Fachada.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		PuertaFachada.Draw(lightingShader);
+		//--------------------------LAVATRASTES--------------------------//
+		view = camera.GetViewMatrix();
+		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model,glm::vec3(posX,posY,posZ));
 		model = glm::translate(model, glm::vec3(-60.0f, -30.0f, 0.0f));
@@ -597,7 +616,45 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		relojPendulo.Draw(lightingShader);
+		//--------------------------ESTUFA--------------------------//
+		view = camera.GetViewMatrix();
+		model = glm::mat4(4);
+		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
+		model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		model = glm::translate(model, glm::vec3(-30.0f, 0.0f, 100.0f));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		hornoPicapiedras.Draw(lightingShader);
 
+		view = camera.GetViewMatrix();
+		model = glm::rotate(model, glm::radians(rotPendulo), glm::vec3(0.0f, 1.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+		FuegoHornoPicapiedras.Draw(lightingShader);
+		//--------------------------Cazuela--------------------------//
+		view = camera.GetViewMatrix();
+		model = glm::mat4(4);
+		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
+		model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		model = glm::translate(model, glm::vec3(-30.0f, 0.0f, 100.0f));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		cazuelaPicapiedras.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		//model = glm::rotate(model, glm::radians(rotPendulo), glm::vec3(0.0f, 1.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+		aguaCazuelaPicapiedras.Draw(lightingShader);
+
+
+		view = camera.GetViewMatrix();
+		model = glm::mat4(4);
+		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
+		model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		model = glm::translate(model, glm::vec3(-30.0f, 0.0f, 100.0f));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		hornoPicapiedras.Draw(lightingShader);
 		/*view = camera.GetViewMatrix();
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
