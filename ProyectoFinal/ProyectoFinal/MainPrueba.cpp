@@ -234,6 +234,16 @@ int main()
 	 //--------------------------------5. Cazuela--------------------------------//
 	 Model cazuelaPicapiedras((char*)"Models/Modelos/Cazuela_Picapiedras/Cazuela_Picapiedras.obj");
 	 Model aguaCazuelaPicapiedras((char*)"Models/Modelos/Cazuela_Picapiedras/AguaCazuela_Picapiedras.obj");
+	 //--------------------------------6. Proyector--------------------------------//
+	 Model proyectorPicapiedras((char*)"Models/Modelos/Proyector_Picapiedras/proyectorPicapiedras.obj");
+	 Model ruedaProyectorPicapiedras((char*)"Models/Modelos/Proyector_Picapiedras/RuedaProyectorPicapiedras.obj");
+	 Model PajaroProyectorPicapiedras((char*)"Models/Modelos/Proyector_Picapiedras/CuerpoPajaroProyectorPicapiedras.obj");
+	 //--------------------------------7. Telefono--------------------------------//
+	 Model telefonoPicapiedras((char*)"Models/Modelos/Telefono_Picapiedras/telefono_picapiedras.obj");
+	 Model PajaroTelefonoPicapiedras((char*)"Models/Modelos/Telefono_Picapiedras/pajaro_tel_picapiedras.obj");
+	 Model AlaDerPajarotelefonoPicapiedras((char*)"Models/Modelos/Telefono_Picapiedras/alaDer_pajaro_tel.obj");
+	 Model AlaIzqPajarotelefonoPicapiedras((char*)"Models/Modelos/Telefono_Picapiedras/alaIzq_pajaro_tel.obj");
+
 	//Objeto traslucido
 	Model objTras("Models/Cubo/Cube01.obj");
 
@@ -559,8 +569,7 @@ int main()
 		glm::mat4 model(1);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-60.0f, -30.0f, 0.0f));
-		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(20.0f, 20.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Fachada.Draw(lightingShader);
 		view = camera.GetViewMatrix();
@@ -570,25 +579,20 @@ int main()
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model,glm::vec3(posX,posY,posZ));
-		model = glm::translate(model, glm::vec3(-60.0f, -30.0f, 0.0f));
-		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-170.0f, -30.0f, 40.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		LavatrastesCuerpo.Draw(lightingShader);
 		view = camera.GetViewMatrix();
 		model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-60.0f, -30.0f, 0.0f));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-170.0f, -30.0f, 40.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		LavatrastesPD.Draw(lightingShader);
 		view = camera.GetViewMatrix();
 		model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-60.0f, -30.0f, 0.0f));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-170.0f, -30.0f, 40.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		LavatrastesPI.Draw(lightingShader);
@@ -597,8 +601,7 @@ int main()
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(120, 0, 40));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-150.0f, -30.0f, -90.0f));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::translate(model, glm::vec3(-160.0f, -30.0f, -140.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Lampara.Draw(lightingShader);
 		//--------------------------RELOJ--------------------------//
@@ -606,11 +609,10 @@ int main()
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-70.0f, 3.0f, -50.0f));
+		model = glm::translate(model, glm::vec3(-270.0f, 30.0f, -50.0f));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		relojCaja.Draw(lightingShader);
-	
+		relojCaja.Draw(lightingShader);	
 		view = camera.GetViewMatrix();
 		model = glm::rotate(model, glm::radians(rotPendulo), glm::vec3(1.0f, 0.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
@@ -621,11 +623,10 @@ int main()
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-30.0f, 0.0f, 100.0f));
+		model = glm::translate(model, glm::vec3(-30.0f, -20.0f, 60.0f));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		hornoPicapiedras.Draw(lightingShader);
-
 		view = camera.GetViewMatrix();
 		model = glm::rotate(model, glm::radians(rotPendulo), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
@@ -636,29 +637,56 @@ int main()
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-30.0f, 0.0f, 100.0f));
+		model = glm::translate(model, glm::vec3(-30.0f, -20.0f, 60.0f));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		cazuelaPicapiedras.Draw(lightingShader);
 		view = camera.GetViewMatrix();
-		//model = glm::rotate(model, glm::radians(rotPendulo), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		aguaCazuelaPicapiedras.Draw(lightingShader);
-
-
+		//--------------------------Proyector--------------------------//
 		view = camera.GetViewMatrix();
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-30.0f, 0.0f, 100.0f));
+		model = glm::translate(model, glm::vec3(-100.0f, 23.0f, -20.0f));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		hornoPicapiedras.Draw(lightingShader);
-		/*view = camera.GetViewMatrix();
+		proyectorPicapiedras.Draw(lightingShader);
+		view = camera.GetViewMatrix();
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
-		relojCuerpoPajaro.Draw(lightingShader);*/
+		ruedaProyectorPicapiedras.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+		PajaroProyectorPicapiedras.Draw(lightingShader);
+		//--------------------------Telefono--------------------------//
+		view = camera.GetViewMatrix();
+		model = glm::mat4(4);
+		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
+		model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		model = glm::translate(model, glm::vec3(-205.0f, -30.0f, -50.0f));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		telefonoPicapiedras.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		model = glm::translate(model, glm::vec3(0.0f, 75.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+		PajaroTelefonoPicapiedras.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+		AlaDerPajarotelefonoPicapiedras.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+		AlaIzqPajarotelefonoPicapiedras.Draw(lightingShader);
+		
+		//-----------------ANIMACIONES-------------// 		
+
 		Anim2.Use();
 		model = glm::mat4(4);
 		tiempo = glfwGetTime();
@@ -669,7 +697,7 @@ int main()
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		//model = glm::mat4(4);
-		tmp = model = glm::translate(model, glm::vec3(-159, 13, -95.5));
+		tmp = model = glm::translate(model, glm::vec3(-360.0f, 47.0f, -95.0f));
 		model = glm::translate(model, glm::vec3(movPajaro, 0, 0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(Anim2.Program, "time"), tiempo);
