@@ -90,7 +90,10 @@ bool animPendulo1 = true;
 bool animPendulo2 = false;
 float movCamera = 0.0f;
 float tiempo;
-
+bool animFuego1 = true;
+bool animFuego2 = false;
+float rotFuego = 0.0f;
+float escFuego = 0.0f;
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
 glm::vec3 PosIni(-95.0f, 1.0f, -45.0f);
@@ -665,7 +668,8 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		hornoPicapiedras.Draw(lightingShader);
 		view = camera.GetViewMatrix();
-		model = glm::rotate(model, glm::radians(rotPendulo), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::rotate(model, glm::radians(rotFuego), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::scale(model, glm::vec3(1.0f, escFuego, 1.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		FuegoHornoPicapiedras.Draw(lightingShader);
@@ -1034,6 +1038,25 @@ void DoMovement()
 		movPajaro = 0.0;
 		rotPajaro = 0.0;
 		direccionGiro = (rand()) % 2;
+	}
+
+	//----------------Animacion fuego---------------------//
+	rotFuego += 0.2;
+	if (animFuego1) //animación hacia la derecha
+	{
+		escFuego += 0.004;
+	}
+	if (animFuego2)// animación hacia la izquierda
+	{
+		escFuego -= 0.004;
+	}
+	if (escFuego >= 1.5) { //se mueve hasta 45° hacia la derecha
+		animFuego1 = false;//Cuando llega a 45, termina anim1 (derecha)
+		animFuego2 = true;//Cuando llega a 45, inicia anim2 (izquierda)
+	}
+	if (escFuego <= 0.5) { //se mueve hasta 45° a la izquierda
+		animFuego1 = true;//Cuando llega a 45 hacia la izquierda, inicia anim1 
+		animFuego2 = false;//Cuando llega a 45 hacia la izquierda, termina anim2 
 	}
 
 	//Mov alas pajaro Reloj
