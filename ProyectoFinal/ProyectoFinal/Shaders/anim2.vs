@@ -21,6 +21,6 @@ void main()
   float effectSalto = abs(sin(5*time)); //abs para simular el salto tipo parábola
   
   gl_Position = projection*view*model*vec4(aPos.x,aPos.y+effectSalto,aPos.z,1);
-  
+  //gl_Position = projection*view*model*vec4(aPos.x,aPos.y,aPos.z,1);
   TexCoords=vec2(aTexCoords.x,aTexCoords.y);
 }

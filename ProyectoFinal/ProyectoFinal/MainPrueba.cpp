@@ -46,11 +46,46 @@ float range = 0.0f;
 float rot = 0.0f;
 float rotAlas = 0.0f;
 float rotPendulo = 0.0f;
+//Mov pajaro 1
 float movPajaro = 0.0f;
+int direccionGiro = 0;
+int escala = 1;
+float rotPajaro = 0.0f;
+float posPaloReloj = 0.0f;
 bool animPajaro1 = true;
 bool animPajaro2 = false;
 bool animAlas1 = true;
 bool animAlas2 = false;
+//Mov pajaro 2
+int paso = 0;
+float movPajaroX = 0.0f;//mov en X
+float movPajaroY = 75.0f;// mov en Y
+float movPajaroZ = 0.0f;//mov en Z
+float rotPajaro2 = 0.0f;//Direccion del pajaro
+bool animPajaro1_2 = true;//Inicia animacion
+bool animPajaro2_2 = false;//detiene animacion
+bool bajaPajaro = false;//Detiene mov en X
+bool brincaPajaro = false;//Detiene mov en Y
+bool desciendePajaro = false;
+bool ventanaPajaro = false;
+bool establePajaro = false;
+bool rotaPajaro = false;
+bool rotaPajaro_2 = false;
+bool regresaPajaro = false;
+//bool animPajaroY_2 = false;//Detiene mov en Z
+bool animAlas1_2 = true;
+bool animAlas2_2 = false;
+//------------------------//
+//Animacion pajaro 3
+float giro = 0.0f;
+float giro1 = 0.0f;
+float giroRueda = 0.0f;
+float inc = 1.0f;
+bool animPatas1 = true;
+bool animPatas2 = false;
+bool acelera = true;
+bool desacelera = false;
+//------------------------//
 bool animPendulo1 = true;
 bool animPendulo2 = false;
 float movCamera = 0.0f;
@@ -238,6 +273,8 @@ int main()
 	 Model proyectorPicapiedras((char*)"Models/Modelos/Proyector_Picapiedras/proyectorPicapiedras.obj");
 	 Model ruedaProyectorPicapiedras((char*)"Models/Modelos/Proyector_Picapiedras/RuedaProyectorPicapiedras.obj");
 	 Model PajaroProyectorPicapiedras((char*)"Models/Modelos/Proyector_Picapiedras/CuerpoPajaroProyectorPicapiedras.obj");
+	 Model PataDPajaroProyectorPicapiedras((char*)"Models/Modelos/Proyector_Picapiedras/PiernaDerPajaroProyectorPicapiedras.obj");
+	 Model PataIPajaroProyectorPicapiedras((char*)"Models/Modelos/Proyector_Picapiedras/PiernaIzqPajaroProyectorPicapiedras.obj");
 	 //--------------------------------7. Telefono--------------------------------//
 	 Model telefonoPicapiedras((char*)"Models/Modelos/Telefono_Picapiedras/telefono_picapiedras.obj");
 	 Model PajaroTelefonoPicapiedras((char*)"Models/Modelos/Telefono_Picapiedras/pajaro_tel_picapiedras.obj");
@@ -579,20 +616,20 @@ int main()
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model,glm::vec3(posX,posY,posZ));
-		model = glm::translate(model, glm::vec3(-170.0f, -30.0f, 40.0f));
+		model = glm::translate(model, glm::vec3(-210.0f, -30.0f, 85.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		LavatrastesCuerpo.Draw(lightingShader);
 		view = camera.GetViewMatrix();
 		model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-170.0f, -30.0f, 40.0f));
+		model = glm::translate(model, glm::vec3(-210.0f, -30.0f, 85.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		LavatrastesPD.Draw(lightingShader);
 		view = camera.GetViewMatrix();
 		model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-170.0f, -30.0f, 40.0f));
+		model = glm::translate(model, glm::vec3(-210.0f, -30.0f, 85.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		LavatrastesPI.Draw(lightingShader);
@@ -601,7 +638,7 @@ int main()
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(120, 0, 40));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-160.0f, -30.0f, -140.0f));
+		model = glm::translate(model, glm::vec3(-160.0f, -30.0f, -170.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Lampara.Draw(lightingShader);
 		//--------------------------RELOJ--------------------------//
@@ -609,7 +646,7 @@ int main()
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-270.0f, 30.0f, -50.0f));
+		model = glm::translate(model, glm::vec3(-205.0f, 30.0f, -15.0f));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		relojCaja.Draw(lightingShader);	
@@ -623,7 +660,7 @@ int main()
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-30.0f, -20.0f, 60.0f));
+		model = glm::translate(model, glm::vec3(-60.0f, -20.0f, 100.0f));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		hornoPicapiedras.Draw(lightingShader);
@@ -637,7 +674,7 @@ int main()
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-30.0f, -20.0f, 60.0f));
+		model = glm::translate(model, glm::vec3(-60.0f, -20.0f, 100.0f));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		cazuelaPicapiedras.Draw(lightingShader);
@@ -650,37 +687,53 @@ int main()
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-100.0f, 23.0f, -20.0f));
+		model = glm::translate(model, glm::vec3(-130.0f, 33.0f, -20.0f));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		proyectorPicapiedras.Draw(lightingShader);
 		view = camera.GetViewMatrix();
+		model = glm::rotate(model, glm::radians(giroRueda), glm::vec3(1.0f, 0.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		ruedaProyectorPicapiedras.Draw(lightingShader);
 		view = camera.GetViewMatrix();
+		model = glm::mat4(4);
+		model = glm::translate(model, glm::vec3(-226.0f, 38.0f, -47.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		PajaroProyectorPicapiedras.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		model = glm::rotate(model, glm::radians(giro), glm::vec3(1.0f, 0.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+		PataDPajaroProyectorPicapiedras.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		model = glm::rotate(model, glm::radians(giro1), glm::vec3(1.0f, 0.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
+		PataIPajaroProyectorPicapiedras.Draw(lightingShader);
 		//--------------------------Telefono--------------------------//
 		view = camera.GetViewMatrix();
 		model = glm::mat4(4);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		model = glm::translate(model, glm::vec3(-205.0f, -30.0f, -50.0f));
+		model = glm::translate(model, glm::vec3(-190.0f, -30.0f, -100.0f));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		telefonoPicapiedras.Draw(lightingShader);
 		view = camera.GetViewMatrix();
-		model = glm::translate(model, glm::vec3(0.0f, 75.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(movPajaroX, movPajaroY, movPajaroZ));
+		model = glm::rotate(model, glm::radians(rotPajaro2), glm::vec3(0.0f, -1.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		PajaroTelefonoPicapiedras.Draw(lightingShader);
 		view = camera.GetViewMatrix();
+		model = glm::rotate(model, glm::radians(3*rotAlas), glm::vec3(1.0f, 0.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		AlaDerPajarotelefonoPicapiedras.Draw(lightingShader);
 		view = camera.GetViewMatrix();
+		model = glm::rotate(model, glm::radians(3*rotAlas), glm::vec3(1.0f, 0.0f, 0.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		AlaIzqPajarotelefonoPicapiedras.Draw(lightingShader);
@@ -696,9 +749,11 @@ int main()
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//model = glm::mat4(4);
-		tmp = model = glm::translate(model, glm::vec3(-360.0f, 47.0f, -95.0f));
-		model = glm::translate(model, glm::vec3(movPajaro, 0, 0));
+
+		tmp = model = glm::translate(model, glm::vec3(-300.0f, 47.0f, -33.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, (escala) * 1.0f));
+		model = glm::translate(model, glm::vec3(movPajaro, 0, posPaloReloj));
+		model = glm::rotate(model, glm::radians(rotPajaro), glm::vec3(0.0f, -1.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(Anim2.Program, "time"), tiempo);
 		relojCuerpoPajaro.Draw(Anim2);
@@ -713,91 +768,7 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		relojAlaDerPajaro.Draw(lightingShader);
-		
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
-		//LamparaCabeza.Draw(lightingShader);
-		//---------------------Dibujar objetos!---------------------//
-		//Torso.Draw(lightingShader);
-		////Pierna Izq
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
-		//PiernaDer.Draw(lightingShader);
-		////	Pie Izq
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//BotaDer.Draw(lightingShader);
-
-		////Pierna Der
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(tmp, glm::vec3(0.5f, 0.0f, -0.1f));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
-
-		//PiernaIzq.Draw(lightingShader);
-		////Pie Der
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//BotaDer.Draw(lightingShader);
-
-		////Brazo derecho
-		//view = camera.GetViewMatrix();
-		//model = glm::mat4(1);
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		//model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
-		//model = glm::translate(model, glm::vec3(-0.75f, 2.5f, 0));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//BrazoDer.Draw(lightingShader);
-
-		////	Brazo Izquierdo
-		//view = camera.GetViewMatrix();
-		//model = glm::mat4(1);
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		//model = glm::translate(model, glm::vec3(0.75f, 2.5f, 0));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//BrazoIzq.Draw(lightingShader);
-
-		////Cabeza
-		//view = camera.GetViewMatrix();
-		//model = glm::mat4(1);
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
-		//Cabeza.Draw(lightingShader);
-
-		////Traslucidez
-
-		//glEnable(GL_BLEND);
-		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		//model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f));
-		//model = glm::mat4(1);
-		//model = glm::scale(model, glm::vec3(1.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
-		//objTras.Draw(lightingShader);
-		//glDisable(GL_BLEND);
-		//glEnable(GL_DEPTH_TEST);
-		//---------------------Dibujar objetos!---------------------//
 		glBindVertexArray(0);
-
 
 		// Also draw the lamp object, again binding the appropriate shader
 		lampShader.Use();
@@ -928,19 +899,19 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 		}
 
 	}
-
+	
 	
 
-	if (keys[GLFW_KEY_K])
-	{
-		if (FrameIndex<MAX_FRAMES)
-		{
-			saveFrame();
-		}
+	//if (keys[GLFW_KEY_K])
+	//{
+	//	if (FrameIndex<MAX_FRAMES)
+	//	{
+	//		saveFrame();
+	//	}
 
-		rot =-25.0f;//Variable que maneja el giro de la camara
+	//	rot =-25.0f;//Variable que maneja el giro de la camara
 
-	}
+	//}
 
 
 	if (GLFW_KEY_ESCAPE == key && GLFW_PRESS == action)
@@ -1007,6 +978,8 @@ void DoMovement()
 			
 	}
 
+	
+
 	if (keys[GLFW_KEY_3])
 	{
 		if (rotRodIzq>-45)
@@ -1039,15 +1012,28 @@ void DoMovement()
 	}
 	if (animPajaro2)// animación hacia la izquierda
 	{
-		movPajaro -= 0.005;
+		if (direccionGiro == 0) {
+			posPaloReloj = 0.0f;
+			rotPajaro += 0.3;
+			escala = 1;
+		}
+		if (direccionGiro == 1) {
+			posPaloReloj = 51.0f;
+			escala = -1;
+			rotPajaro += 0.3;
+		}
 	}
-	if (movPajaro >= 5) { //se mueve hasta 45° hacia la derecha
-		animPajaro1 = false;//Cuando llega a 45, termina anim1 (derecha)
-		animPajaro2 = true;//Cuando llega a 45, inicia anim2 (izquierda)
+	if (movPajaro >= 8) { 
+		animPajaro1 = false;
+		animPajaro2 = true;
+		
 	}
-	if (movPajaro <= -5) { //se mueve hasta 45° a la izquierda
-		animPajaro1 = true;//Cuando llega a 45 hacia la izquierda, inicia anim1 
-		animPajaro2 = false;//Cuando llega a 45 hacia la izquierda, termina anim2 
+	if (rotPajaro >= 360 || rotPajaro <= -360 ) {
+		animPajaro1 = true;
+		animPajaro2 = false;
+		movPajaro = 0.0;
+		rotPajaro = 0.0;
+		direccionGiro = (rand()) % 2;
 	}
 
 	//Mov alas pajaro Reloj
@@ -1066,31 +1052,117 @@ void DoMovement()
 	if (rotAlas <= -30) { //se mueve hasta 45° a la izquierda
 		animAlas1 = true;//Cuando llega a 45 hacia la izquierda, inicia anim1 
 		animAlas2 = false;//Cuando llega a 45 hacia la izquierda, termina anim2 
+	
 	}
+	//Inicia animacion compleja pajaro2
 
-	//Mov Personaje
-	if (keys[GLFW_KEY_H])
-	{
-		posZ += 1;
+	if (animPajaro1_2 ) {
+		bajaPajaro = true;		
+		paso = 1;
 	}
-
-	if (keys[GLFW_KEY_Y])
-	{
-		posZ -= 1;
+	if (bajaPajaro ) {
+		movPajaroZ += 0.07;
+		movPajaroY -= 0.1;
+		
 	}
-
-	if (keys[GLFW_KEY_G])
-	{
-		posX -= 1;
+	if (brincaPajaro ) {
+		movPajaroZ += 0.2;
+		movPajaroY += 0.15;
+		
 	}
-
-	if (keys[GLFW_KEY_J])
-	{
-		posX += 1;
+	if (desciendePajaro ) {
+		movPajaroZ += 0.2;
+		movPajaroY -= 0.15;
+		
 	}
+	if (ventanaPajaro ) {
+		movPajaroZ += 0.09;
+		movPajaroY += 0.1;
+	}
+	if (rotaPajaro) {
+		rotPajaro2 += 0.5;
+	}
+	if (rotaPajaro_2) {
+		rotPajaro2 -= 0.5;
+	}
+	if (regresaPajaro) {
+		movPajaroZ -= 1.125;
+		movPajaroY += 0.15;
+	}
+	if (movPajaroY <= 15 && paso ==1) {
+		bajaPajaro = false;
+		brincaPajaro = true;
+		animPajaro1_2 = false;
+		paso = 2;
+	}
+	if (movPajaroY >= 95 && paso ==2 ) {
+		brincaPajaro = false;
+		bajaPajaro = false;
+		desciendePajaro = true;
+		animPajaro1_2 = false;
+		paso = 3;
+	}
+	
+	if (movPajaroY <= 47 && paso == 3) {
+		desciendePajaro = false;
+		rotaPajaro = true;
+		paso = 4;
+	}
+	if (rotPajaro2 >= 180 && paso == 4) {
+		rotaPajaro = false;
+		regresaPajaro = true;
+		paso = 5;
+	}
+	if (movPajaroY >= 75 && paso == 5) {
+		regresaPajaro = false;
+		rotaPajaro_2 = true;
+		paso = 6;
+	}
+	if (rotPajaro2 <= 0 && paso == 6) {
+		rotaPajaro_2 = false;
+		animPajaro1_2 = true;
+	}
+	//Termina animacion compleja pajaro2
+	
+	//Inicia animacion compleja pajaro3
+	if (acelera) {
+		giroRueda -= (0.2)*(inc)*(inc);
+		if (animPatas1) //animación hacia la derecha
+		{
+			giro += 2;
+			giro1 -= 3;
 
+		}
+		if (animPatas2)// animación hacia la izquierda
+		{
+			giro -= 2;
+			giro1 += 3;
 
-
+		}
+		if (giro >= 30) { //se mueve hasta 45° hacia la derecha
+			animPatas1 = false;//Cuando llega a 45, termina anim1 (derecha)
+			animPatas2 = true;//Cuando llega a 45, inicia anim2 (izquierda)
+		}
+		if (giro <= -30) { //se mueve hasta 45° a la izquierda
+			animPatas1 = true;//Cuando llega a 45 hacia la izquierda, inicia anim1 
+			animPatas2 = false;//Cuando llega a 45 hacia la izquierda, termina anim2 
+		}
+		inc += 0.001;
+	}
+	if (desacelera) {
+		giroRueda -= (0.2) * (inc) * (inc);
+		inc -= 0.001;
+		giro = 0;
+		giro1 = 0;
+	}
+	if (inc >= 5) {
+		acelera = false;
+		desacelera = true;
+	}
+	if (inc <= 0) {
+		desacelera = false;
+		acelera = true;
+	}
 
 	// Camera controls
 	if (keys[GLFW_KEY_W] || keys[GLFW_KEY_UP])
