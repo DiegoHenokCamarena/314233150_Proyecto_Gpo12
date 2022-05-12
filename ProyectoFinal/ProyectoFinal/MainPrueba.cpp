@@ -94,6 +94,10 @@ bool animFuego1 = true;
 bool animFuego2 = false;
 float rotFuego = 0.0f;
 float escFuego = 0.0f;
+//------------------------//
+bool abre = false;
+bool cierra = false;
+float rotPuerta = 0.0f;
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
 glm::vec3 PosIni(-95.0f, 1.0f, -45.0f);
@@ -613,6 +617,9 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Fachada.Draw(lightingShader);
 		view = camera.GetViewMatrix();
+		model = glm::rotate(model, glm::radians(rotPuerta), glm::vec3(0.0f, 1.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "transparencia"), 0.0);
 		PuertaFachada.Draw(lightingShader);
 		//--------------------------LAVATRASTES--------------------------//
 		view = camera.GetViewMatrix();
@@ -906,6 +913,11 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 	
 	
 
+	
+	
+	
+
+
 	//if (keys[GLFW_KEY_K])
 	//{
 	//	if (FrameIndex<MAX_FRAMES)
@@ -1109,7 +1121,7 @@ void DoMovement()
 		rotPajaro2 -= 0.5;
 	}
 	if (regresaPajaro) {
-		movPajaroZ -= 1.125;
+		movPajaroZ -= 1.135;
 		movPajaroY += 0.15;
 	}
 	if (movPajaroY <= 15 && paso ==1) {
@@ -1186,6 +1198,29 @@ void DoMovement()
 		desacelera = false;
 		acelera = true;
 	}
+
+	if (keys[GLFW_KEY_O])
+	{
+		cierra = false;
+		abre = true;
+	}
+
+	if (keys[GLFW_KEY_C])
+	{
+		abre = false;
+		cierra = true;
+	}
+
+	if (abre) {
+		if (rotPuerta >= -90.0f)
+			rotPuerta -= 0.05f;
+	}
+
+	if (cierra) {
+		if (rotPuerta <= 0.0f)
+			rotPuerta += 0.05f;
+	}
+	
 
 	// Camera controls
 	if (keys[GLFW_KEY_W] || keys[GLFW_KEY_UP])

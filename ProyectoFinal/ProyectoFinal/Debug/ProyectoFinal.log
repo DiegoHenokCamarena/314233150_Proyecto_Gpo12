@@ -1,40 +1,41 @@
 ﻿  MainPrueba.cpp
 C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
 C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\modelAnim.h(519,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(492,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(749,23): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(953,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(954,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(958,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(959,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(961,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(962,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(997,20): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1001,20): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1015,21): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1021,20): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1027,20): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1044,17): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1047,20): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1051,20): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1065,17): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1069,17): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1087,21): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1088,20): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1092,20): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1093,21): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1097,20): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1098,21): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1102,21): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1103,20): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1113,21): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1152,27): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1173,15): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1176,30): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1177,15): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(496,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(756,23): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(965,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(966,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(970,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(971,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(973,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(974,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1009,20): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1013,20): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1027,21): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1033,20): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1039,20): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1056,17): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1059,20): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1063,20): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1077,17): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1081,17): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1099,21): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1100,20): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1104,20): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1105,21): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1109,20): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1110,21): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1114,21): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1115,20): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1124,22): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1125,21): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1164,27): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1185,15): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1188,30): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\ProyectoFinal\MainPrueba.cpp(1189,15): warning C4305: '-=': truncamiento de 'double' a 'float'
 LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
 soil2-debug.lib(etc1_utils.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(etc1_utils.obj)' o en 'C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 soil2-debug.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_DXT.obj)' o en 'C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
 soil2-debug.lib(image_helper.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_helper.obj)' o en 'C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
-soil2-debug.lib(SOIL2.obj) : warning LNK4099: no se encontró PDB '' con 'soil2-debug.lib(SOIL2.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(SOIL2.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(SOIL2.obj)' o en 'C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
   ProyectoFinal.vcxproj -> C:\Users\diego\OneDrive\Escritorio\ProyectoCG\314233150_Proyecto_Gpo12\ProyectoFinal\Debug\ProyectoFinal.exe
