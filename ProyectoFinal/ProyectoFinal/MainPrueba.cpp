@@ -72,7 +72,6 @@ bool establePajaro = false;
 bool rotaPajaro = false;
 bool rotaPajaro_2 = false;
 bool regresaPajaro = false;
-//bool animPajaroY_2 = false;//Detiene mov en Z
 bool animAlas1_2 = true;
 bool animAlas2_2 = false;
 //------------------------//
@@ -192,16 +191,6 @@ int main()
 	// Init GLFW
 	glfwInit();
 
-
-
-
-	// Set all the required options for GLFW
-	/*(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
-
 	// Create a GLFWwindow object that we can use for GLFW's functions
 	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "314233150_ProyectoFinal", nullptr, nullptr);
 
@@ -248,12 +237,6 @@ int main()
 	Shader animShader("Shaders/anim.vs", "Shaders/anim.frag");
 	Shader Anim2("Shaders/anim2.vs", "Shaders/anim2.frag");
 	//--------------------------------CARGA DE MODELOS--------------------------------//
-	/*Model BotaDer((char*)"Models/Personaje/bota.obj");
-	Model PiernaDer((char*)"Models/Personaje/piernader.obj");
-	Model PiernaIzq((char*)"Models/Personaje/piernaizq.obj");
-	Model Torso((char*)"Models/Personaje/torso.obj");
-	Model BrazoDer((char*)"Models/Personaje/brazoder.obj");
-	Model BrazoIzq((char*)"Models/Personaje/brazoizq.obj");*/
 	//--------------------------------FACHADA--------------------------------//
 	Model Fachada((char*)"Models/Modelos/Fachada_Picapiedras/fachadaPicapiedras.obj");
 	Model PuertaFachada((char*)"Models/Modelos/Fachada_Picapiedras/PuertaFachadaPicapiedras.obj");
@@ -305,8 +288,6 @@ int main()
 		KeyFrame[i].rotInc = 0;
 	}
 
-
-
 	// Set up vertex data (and buffer(s)) and attribute pointers
 	GLfloat vertices[] =
 	{
@@ -354,7 +335,6 @@ int main()
 		-0.5f,  0.5f, -0.5f,    0.0f,  1.0f,  0.0f,     0.0f,  1.0f
 	};
 
-
 	GLfloat skyboxVertices[] = {
 		// Positions
 		-1.0f,  1.0f, -1.0f,
@@ -400,7 +380,6 @@ int main()
 		1.0f, -1.0f,  1.0f
 	};
 
-
 	GLuint indices[] =
 	{  // Note that we start from 0!
 		0,1,2,3,
@@ -427,7 +406,6 @@ int main()
 		glm::vec3(1.5f,  0.2f, -1.5f),
 		glm::vec3(-1.3f,  1.0f, -1.5f)
 	};
-
 
 	// First, set the container's VAO (and VBO)
 	GLuint VBO, VAO, EBO;
@@ -594,18 +572,8 @@ int main()
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
-		// Bind diffuse map
-		//glBindTexture(GL_TEXTURE_2D, texture1);*/
-
-		// Bind specular map
-		/*glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, texture2);*/
-
-
 		glBindVertexArray(VAO);
 		glm::mat4 tmp = glm::mat4(1.0f); //Temp
-
-
 
 		//Carga de modelo
 		//--------------------------FACHADA--------------------------//
@@ -807,7 +775,6 @@ int main()
 		}
 		glBindVertexArray(0);
 
-
 		// Draw skybox as last
 		glDepthFunc(GL_LEQUAL);  // Change depth function so depth test passes when values are equal to depth buffer's content
 		SkyBoxshader.Use();
@@ -823,15 +790,9 @@ int main()
 		glBindVertexArray(0);
 		glDepthFunc(GL_LESS); // Set depth function back to default
 
-
-
-
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
 	}
-
-
-
 
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteVertexArrays(1, &lightVAO);
@@ -841,13 +802,8 @@ int main()
 	glDeleteBuffers(1, &skyboxVBO);
 	// Terminate GLFW, clearing any resources allocated by GLFW.
 	glfwTerminate();
-
-
-
-
 	return 0;
 }
-
 
 void animacion()
 {
@@ -887,7 +843,6 @@ void animacion()
 		}
 	}
 
-
 // Is called whenever a key is pressed/released via GLFW
 void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode)
 {
@@ -910,25 +865,6 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 		}
 
 	}
-	
-	
-
-	
-	
-	
-
-
-	//if (keys[GLFW_KEY_K])
-	//{
-	//	if (FrameIndex<MAX_FRAMES)
-	//	{
-	//		saveFrame();
-	//	}
-
-	//	rot =-25.0f;//Variable que maneja el giro de la camara
-
-	//}
-
 
 	if (GLFW_KEY_ESCAPE == key && GLFW_PRESS == action)
 	{
@@ -992,9 +928,7 @@ void DoMovement()
 		if (rotRodIzq<80.0f)
 			rotRodIzq += 1.0f;
 			
-	}
-
-	
+	}	
 
 	if (keys[GLFW_KEY_3])
 	{
@@ -1247,10 +1181,4 @@ void DoMovement()
 	{
 		camera.ProcessKeyboard(RIGHT, 10 * deltaTime);
 	}
-
-
-
-
-
-
 }
